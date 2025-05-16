@@ -1,0 +1,3 @@
+.header { background-image: linear-gradient(transparent, hsl(194.79deg 57.48% 12.5% / 50%)) !important }
+
+/* .header { background-image: linear-gradient(transparent, color-mix(in hsl, var(--accent-color) 25%, hsl(0 0% 100%) 25%, hsla(0, 0%, 0%, 0) 50%)) !important } */

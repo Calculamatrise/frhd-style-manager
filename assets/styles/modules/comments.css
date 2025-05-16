@@ -1,0 +1,13 @@
+.track-comments-box {
+	max-height: 80vh;
+	overflow-y: auto;
+}
+
+.track-comments-container .track-comments-input {
+	border-bottom: 1px solid var(--brdr-clr-1);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.track-comments-container .track-comments-list div.track-comment:first-child { border-top: none !important }

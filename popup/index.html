@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Free Rider Themes</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="module" src="script.js" defer></script>
+</head>
+<body class="view">
+	<button class="tab" id="state"></button>
+	<nav>
+		<label for="options" class="tab ripple">Options</label>
+		<label for="styles" class="tab ripple">Styles</label>
+		<label for="themes" class="tab ripple">Themes</label>
+	</nav>
+	<div class="details">
+		<input type="radio" name="nav" id="options" checked>
+		<label class="focus ripple" title="Prevent the comment section from scrolling the entire page">
+			<input type="checkbox" id="independentCommentScroll">
+			<span>Isolated Comments</span>
+		</label>
+		<details>
+			<summary class="tab ripple">Show advanced options</summary>
+			<label title="Change the overall brightness of the game">
+				<span class="name">Brightness (100%)</span>
+				<input type="range" class="override-pointer-events" id="brightness" min="1" max="100" value="100" style="width: -webkit-fill-available">
+			</label>
+			<button class="tab ripple" id="reset-settings" title="Reset all the settings to their default state (THIS CANNOT BE UNDONE)">Reset settings</button>
+		</details>
+	</div>
+	<div class="details">
+		<input type="radio" name="nav" id="styles">
+		<label class="disabled ripple">
+			<input type="radio" name="style" id="current">
+			<span>Current</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="style" id="default" checked>
+			<span>Default</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="style" id="modern">
+			<span data-stag="beta">Modern</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="style" id="nostalgia">
+			<span>Nostalgia</span>
+		</label>
+	</div>
+	<div class="details">
+		<input type="radio" name="nav" id="themes">
+		<label class="ripple disabled" title="This option will switch between light and dark according to the time of day">
+			<input type="radio" name="theme" id="auto" disabled>
+			<span>Auto</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="theme" id="system">
+			<span>System theme</span>
+		</label>
+		<hr>
+		<label class="ripple">
+			<input type="radio" name="theme" id="dark">
+			<span>Dark</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="theme" id="darker">
+			<span>Darker</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="theme" id="light">
+			<span>Light</span>
+		</label>
+		<label class="ripple">
+			<input type="radio" name="theme" id="midnight">
+			<span>Midnight</span>
+		</label>
+		<label class="ripple disabled">
+			<input type="radio" name="theme" id="custom">
+			<span>Custom</span>
+		</label>
+		<details>
+			<summary>Custom Options</summary>
+			<label for="colorPalette.accentColor" class="focus ripple" title="Customize your canvas" style="background-color: hsl(0deg 0% 0% / 20%);mix-blend-mode: exclusion;">
+				<input type="checkbox" id="colorPalette.accentColor-visible"><input type="color" id="colorPalette.accentColor">
+				<span>Accent Color</span>
+			</label>
+			<label for="colorPalette.backgroundColor" class="focus ripple" title="Customize your canvas" style="background-color: hsl(0deg 0% 0% / 20%);mix-blend-mode: exclusion;">
+				<input type="checkbox" id="colorPalette.backgroundColor-visible"><input type="color" id="colorPalette.backgroundColor">
+				<span>Background Color</span>
+			</label>
+		</details>
+	</div>
+</body>
+</html>

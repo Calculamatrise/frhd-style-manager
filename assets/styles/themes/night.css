@@ -1,0 +1,18 @@
+:root {
+	/* experimental darkness */
+	--accent-color: hsl(195 57% 75%);
+	--bd-clr: hsl(195 16% 7% / 90%);
+	--bg-clr: hsl(195 16% 7%);
+	--btm-grad: hsl(191 100% 5% / 50%);
+	--brdr-clr-1: hsl(193 44% 10%);
+	--brdr-clr-2: hsl(193 19% 15%);
+	--game-box-clr: hsl(192 20% 8%);
+	--odd-cmnt-clr: hsl(197 37% 6%);
+	--txt-clr: hsl(0 0% 91%);
+	--txt-clr-tinted: hsl(202 24% 91%);
+	--txt-clr-tinted-2: hsl(204 24% 78%);
+	--stat-val-clr: hsl(205.33deg 29.41% 60%);
+	color-scheme: dark
+}
+
+.top > :is(.preview, .thumb), .track-list-tile-thumb { filter: invert(.9) brightness(.9) }
