@@ -3,9 +3,13 @@
 <head>
 	<title>Free Rider Themes</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" id="style-preview">
+	<link rel="stylesheet" id="theme-preview">
+	<script src="assets/scripts/preview.js"></script>
+	<script src="assets/scripts/ripple.js"></script>
 	<script type="module" src="script.js" defer></script>
 </head>
-<body class="view">
+<body>
 	<button class="tab" id="state"></button>
 	<nav>
 		<label for="options" class="tab ripple">Options</label>
@@ -14,9 +18,17 @@
 	</nav>
 	<div class="details">
 		<input type="radio" name="nav" id="options" checked>
+		<label class="focus ripple" title="When checked, the theme will adapt to the colour scheme of the selected style">
+			<input type="checkbox" id="adaptiveTheme">
+			<span>Adaptive theme</span>
+		</label>
 		<label class="focus ripple" title="Prevent the comment section from scrolling the entire page">
 			<input type="checkbox" id="independentCommentScroll">
-			<span>Isolated Comments</span>
+			<span>Isolated comments</span>
+		</label>
+		<label class="focus ripple" title="When checked, the style and theme you have selected will be applied to this popup">
+			<input type="checkbox" id="previewTheme">
+			<span>Preview theme</span>
 		</label>
 		<details>
 			<summary class="tab ripple">Show advanced options</summary>

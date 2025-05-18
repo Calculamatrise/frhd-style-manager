@@ -1,4 +1,4 @@
-import ShallowMap from "../shared/ShallowMap.js";
+import ObjectMap from "./ObjectMap.js";
 
 chrome.storage.proxy ?? Object.defineProperty(chrome.storage, 'proxy', {
 	value: {},
@@ -6,11 +6,11 @@ chrome.storage.proxy ?? Object.defineProperty(chrome.storage, 'proxy', {
 });
 for (const scope of Array('local', 'session').filter(scope => typeof chrome.storage[scope] == 'object' && typeof chrome.storage.proxy[scope] == 'undefined')) {
 	chrome.storage.proxy[scope] = (() => {
-		const root = new ShallowMap();
+		const root = new ObjectMap();
 		const instance = new Proxy(root, {
 			set(target, property, value, receiver) {
-				if (value && typeof value === 'object' && !(value instanceof ShallowMap)) {
-					value = new Proxy(new ShallowMap(value), this);
+				if (value && typeof value === 'object' && !(value instanceof ObjectMap)) {
+					value = new Proxy(new ObjectMap(value), this);
 				}
 				const returnValue = Reflect.set(target, property, value, receiver);
 				if (target === root) {

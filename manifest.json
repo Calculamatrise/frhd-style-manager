@@ -1,13 +1,10 @@
 {
 	"name": "Free Rider Themes",
-	"version": "0.0.1.1",
-	"version_name": "0.0.1-patch",
+	"version": "0.0.2",
 	"author": "Calculamatrise",
 	"description": "A style manager for Free Rider HD.",
 	"manifest_version": 3,
-	"action": {
-		"default_popup": "popup/index.html"
-	},
+	"action": { "default_popup": "popup/index.html" },
 	"background": {
 		"service_worker": "service-worker.js",
 		"type": "module"
@@ -23,9 +20,9 @@
 		"*://www.freeriderhd.com/*"
 	],
 	"web_accessible_resources": [{
-		"resources": ["assets/*"],
+		"resources": ["assets/*", "shared/*"],
 		"matches": [
-			"*://*.kanoapps.com/*",
+			"*://frhd.kanoapps.com/*",
 			"*://*.freeriderhd.com/*"
 		]
 	}]

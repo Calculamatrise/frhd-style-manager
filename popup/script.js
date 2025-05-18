@@ -71,11 +71,6 @@ for (const item in defaults) {
 	}
 }
 
-document.documentElement.addEventListener('pointerdown', function (event) {
-	this.style.setProperty('--offsetX', event.offsetX),
-	this.style.setProperty('--offsetY', event.offsetY)
-});
-
 function setState(enabled) {
 	state.classList[enabled ? 'add' : 'remove']('enabled');
 	return enabled

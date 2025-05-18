@@ -10,30 +10,26 @@ addEventListener('message', function({ data }) {
 });
 
 function setOptions(options) {
-	console.log(options);
 	// document.documentElement.style.setProperty('--bg-clr', 'red');
 	document.documentElement.style.setProperty('filter', 'brightness(' + options.brightness / 100 + ')');
 }
 
 // Fix some functional buttons
-
 document.addEventListener('DOMContentLoaded', function() {
 	if (document.fullscreenEnabled) {
 		const requestFullScreenHeader = document.querySelector('#header-fullscreen');
 		if (requestFullScreenHeader !== null) {
 			requestFullScreenHeader.removeAttribute('href');
 			requestFullScreenHeader.addEventListener('click', function(event) {
-				event.preventDefault();
+				// event.stopPropagation();
 				if (document.fullscreenElement) {
 					document.exitFullscreen();
 				} else {
 					document.documentElement.requestFullscreen()
 				}
-			});
+			}, { passive: true });
 		}
 	}
-
-	// const loadMoreComments = document.querySelector();
 });
 
 if ('navigation' in window) {
@@ -58,7 +54,7 @@ function init() {
 						})
 					}
 				}).observe(trackCommentsList, { childList: true })
-			});
+			}, { passive: true });
 		}
 	}
 }

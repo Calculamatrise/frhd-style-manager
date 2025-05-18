@@ -1,0 +1,20 @@
+:root {
+	/* experimental */
+	--text-brightness: 18%;
+
+	--accent-color: hsl(194.79deg 57.48% 25%);
+	--accent-hue: 194.79deg;
+	--bd-clr: hsl(0 0% 100% / 90%);
+	--bg-clr: hsl(0 0% 100%);
+	--btm-grad: hsl(191 100% 95%);
+	--secondary-grad: linear-gradient(to bottom, transparent, hsl(191deg 100% 50% / 10.5%)) !important;
+	--brdr-clr-1: hsl(193 44% 80%);
+	--brdr-clr-2: hsl(193 19% 62%);
+	--game-box-clr: hsl(190 21% 95%);
+	--odd-cmnt-clr: hsl(197 37% 96%);
+	--txt-clr: hsl(0 0% 18%);
+	--txt-clr-tinted: hsl(202 24% 9%);
+	--txt-clr-tinted-2: hsl(204 24% 22%);
+	--stat-val-clr: hsl(205.33deg 29.41% 30%);
+	color-scheme: light
+}

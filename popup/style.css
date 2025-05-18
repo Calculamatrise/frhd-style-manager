@@ -1,51 +1,23 @@
-@keyframes rotate {
-	to { rotate: 360deg }
-}
-
-@keyframes slide {
-	to { left: 0 }
-}
+@import url('assets/styles/loading.css');
+@import url('assets/styles/ripple.css');
 
 :root {
-	--accent-color: hsl(207, 17%, 10%);
-	--background-color: hsl(207, 16%, 14%);
-	--border-color: hsl(200deg 40% 25% / 50%);
-	--text-color: hsl(0, 0%, 99%);
-	color-scheme: dark
+	--accent-color: hsl(var(--accent-hue), 17%, 10%);
+	--accent-hue: 207deg;
+	--bg-clr: hsl(var(--accent-hue), 16%, 14%);
+	--brdr-clr-1: hsl(var(--accent-hue) 40% 25% / 50%);
+	--text-brightness: 85%;
+	--txt-clr: hsl(0 0% 99%);
+	color-scheme: dark;
+	scrollbar-color: hsl(var(--accent-hue) 10% 50% / 50%) transparent;
+	scrollbar-width: thin;
 }
 
-::placeholder { color: hsl(200deg 10% 50% / 50%) }
-::-webkit-scrollbar {
-	height: 8px;
-	width: 8px
-}
+::placeholder { color: hsl(var(--accent-hue) 10% 50% / 50%) }
 
-::-webkit-scrollbar-corner { display: none }
-::-webkit-scrollbar-track {
-	background-color: #0e111499;
-	border-radius: 30px
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: #232f38;
-	border-radius: 30px
-}
-
-::-webkit-scrollbar-thumb:hover { background-color: #303b44 }
-::-webkit-scrollbar-thumb:active { background-color: #3d4953 }
-
-html {
-	background-color: var(--background-color);
-	color: var(--text-color);
-}
-
-hr {
-	background-color: var(--border-color);
-	border: none;
-	height: 1px;
-}
-
+html { background-color: var(--bg-clr) }
 body {
+	color: var(--txt-clr);
 	margin: 0.75rem;
 	max-height: fit-content;
 	overflow-y: auto;
@@ -53,45 +25,24 @@ body {
 	width: 200px;
 }
 
-body > .view {
-	display: inline-block;
-	min-width: 200px;
-}
-
-body:has(> div.alt.view) {
-	display: flex;
-	gap: 1.25rem;
-}
-
-body:has(> div.alt.view > input:checked) { translate: -100vw; }
-
-/* body:has(> div.alt.view > input:checked) > :not(div.alt.view) {
-	display: none !important;
-} */
-
-/* div.alt.view {
-	animation: slide 0.5s forwards;
-	background-color: var(--background-color);
-	bottom: 0;
-	box-sizing: border-box;
-	left: 100%;
-	position: fixed;
-	top: 0;
-	width: 100%;
-} */
-
-.view > nav {
-	border-bottom: 1px solid var(--border-color);
+body > nav {
+	border-bottom: 1px solid var(--brdr-clr-1);
 	display: grid;
 	font-family: roboto_medium, Arial, Helvetica, sans-serif;
 	padding-bottom: 0.5rem;
 	margin-bottom: 0.5rem;
 }
 
-.view > nav:has(> :nth-child(4)) { grid-template-columns: repeat(2, 1fr); }
+body > nav:has(> :nth-child(4)) { grid-template-columns: repeat(2, 1fr); }
+
+hr {
+	background-color: var(--brdr-clr-1);
+	border: none;
+	height: 1px;
+}
 
 #state, .danger, .safe {
-	color: hsl(0deg 0% 100% / 50%);
+	color: hsl(0deg 0% var(--text-brightness) / 75%);
 	transition: all 200ms;
 }
 
@@ -114,8 +65,7 @@ a.button, button, details > summary, label {
 	border: none;
 	border-radius: 8px;
 	box-sizing: border-box;
-	color: hsl(200deg 100% 90% / 50%);
-	/* color: hsl(0deg 0% 100% / 75%); */
+	color: hsl(var(--accent-hue) 85% var(--text-brightness) / 60%);
 	display: block;
 	overflow: hidden;
 	padding: 0.5rem 1rem;
@@ -127,7 +77,7 @@ a.button, button, details > summary, label {
 a.tab, button.tab, details.tab > summary, details > summary.tab, label.tab {
 	border-radius: 5px;
 	/* color: hsl(0deg 0% 100% / 50%); */
-	color: hsl(200deg 40% 75% / 50%);
+	color: hsl(var(--accent-hue) 60% var(--text-brightness) / 60%);
 	text-align: center;
 	text-transform: capitalize;
 	width: -webkit-fill-available;
@@ -146,7 +96,7 @@ a:is(.button, .tab):hover, button:hover, label:hover, details.tab > summary:hove
 	background-color: crimson;
 	border-radius: 0.25rem;
 	bottom: 0;
-	color: var(--text-color);
+	color: currentColor;
 	content: "!";
 	font-family: system-ui;
 	font-size: 0.75rem;
@@ -181,7 +131,7 @@ dialog.prompt > form {
 .option-wrapper { position: relative; }
 .option-wrapper > .options:empty { display: none; }
 .option-wrapper > .options {
-	background-color: var(--background-color);
+	background-color: var(--bg-clr);
 	display: flex;
 	flex-direction: column;
 	max-height: 25vh;
@@ -269,7 +219,7 @@ label input[type="color"]::-webkit-color-swatch { border: none }
 input:is([type="date"], [type="email"], [type="number"], [type="password"], [type="text"]),
 textarea {
 	background-color: hsl(206, 23%, 18%);
-	color: var(--text-color);
+	color: currentColor;
 	border: none;
 	border-radius: 0.2rem;
 	padding: 0.25rem 0.5rem;
@@ -298,7 +248,7 @@ select {
 	border-radius: 4px;
 	border-right: 0.25rem solid transparent;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, .2) !important;
-	color: var(--text-color);
+	color: currentColor;
 	outline: none;
 	padding: 0.25rem;
 }
@@ -319,7 +269,7 @@ table tbody tr td {
 .dropdown:empty { display: none; }
 .dropdown > main {
 	background-color: var(--accent-color);
-	box-shadow: 0 0 20px -10px var(--border-color);
+	box-shadow: 0 0 20px -10px var(--brdr-clr-1);
 	display: block;
 	flex-direction: column;
 	max-height: 0;
@@ -360,57 +310,4 @@ table tbody tr td {
 	margin-right: 0.4rem;
 	object-fit: cover;
 	width: 2rem;
-}
-
-button.loading { box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, .2) !important; }
-
-.loading {
-	-webkit-user-select: none;
-	color: transparent !important;
-	opacity: 0.5;
-	pointer-events: none;
-	position: relative;
-	transition: box-shadow 240ms;
-	user-select: none;
-}
-
-.loading * { visibility: hidden; }
-.loading::after {
-	animation: rotate 800ms cubic-bezier(.5, .5, .5, .5) infinite;
-	background-color: transparent;
-	border: 2px solid;
-	border-color: white !important;
-	border-bottom-color: transparent !important;
-	border-radius: 50%;
-	content: "";
-	height: 0;
-	inset: 0;
-	margin: auto;
-	padding: 0.25rem;
-	position: absolute;
-	width: 0;
-}
-
-.ripple { overflow: hidden; }
-.ripple::before {
-	background-color: black;
-	border-radius: 50%;
-	content: "";
-	left: calc(var(--offsetX) * 1px);
-	opacity: 0;
-	padding: 50%;
-	pointer-events: none;
-	position: absolute;
-	scale: 2;
-	top: calc(var(--offsetY) * 1px);
-	translate: -50% -50%;
-	transition: translate 800ms ease-out, scale 800ms, opacity 1s;
-}
-
-/* .ripple:not(.focus):active::before, .ripple.focus:not(:focus-within):active::before */
-.ripple:is(:not(.focus), .focus:not(:focus-within)):active::before {
-	opacity: .5;
-	scale: 0;
-	transition: 0s;
-	translate: -50% -50%;
 }

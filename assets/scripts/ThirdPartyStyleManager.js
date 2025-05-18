@@ -25,18 +25,7 @@ self.ThirdPartyStyleManager || Object.defineProperty(self, 'ThirdPartyStyleManag
 	writable: true
 });
 
-{
-	let Application = self.Application;
-	const start = Date.now();
-	while (!Application) {
-		Application = self.Application;
-		if (Date.now() - start > 5e3)
-			console.warn('Application load timed out.');
-			break;
-	}
-
-	self.GameStyleManager || Object.defineProperty(self, 'GameStyleManager', {
-		value: new ThirdPartyStyleManager(Application),
-		writable: true
-	});
-}
+self.GameStyleManager || Object.defineProperty(self, 'GameStyleManager', {
+	value: new ThirdPartyStyleManager(Application),
+	writable: true
+});

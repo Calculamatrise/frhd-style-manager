@@ -1,40 +1,29 @@
 import defaults from "./constants/defaults.js";
+import CONTENT_SCRIPT_TEMPLATE from "./constants/contentscripttemp.js";
 
-const documentUrlPatterns = [
-	"*://frhd.kanoapps.com/*",
-	"*://www.freeriderhd.com/*"
-];
-const contentScriptTemplate = {
-	excludeMatches: [
-		"*://*/*\?ajax*",
-		"*://*/*&ajax*",
-		"*://*.com/*api/*"
-	],
-	matches: documentUrlPatterns
-};
-const STYLE_SCRIPT_ID = 'style';
 const STYLE_SCRIPT = {
-	id: STYLE_SCRIPT_ID,
-	css: ["assets/styles/themes/light.css"]
+	id: 'style',
+	css: ["shared/styles/themes/light.css"]
 };
 const contentScripts = [
-	Object.assign({}, contentScriptTemplate, {
-		css: ["assets/styles/base.css"],
+	Object.assign({}, CONTENT_SCRIPT_TEMPLATE, {
+		css: ["shared/styles/base.css"],
 		id: crypto.randomUUID(),
 		js: ["assets/scripts/broker.js"]
 	}),
-	Object.assign({}, contentScriptTemplate, {
+	Object.assign({}, CONTENT_SCRIPT_TEMPLATE, {
+		id: "style-manager",
+		js: ["assets/scripts/ThirdPartyStyleManager.js"],
+		runAt: "document_end",
+		world: "MAIN"
+	}),
+	Object.assign({}, CONTENT_SCRIPT_TEMPLATE, {
 		id: "custom",
-		js: [
-			"assets/scripts/ThirdPartyStyleManager.js",
-			"assets/scripts/custom.js"
-		],
+		js: ["assets/scripts/custom.js"],
 		runAt: "document_start",
 		world: "MAIN"
 	}),
-	Object.assign({}, contentScriptTemplate, STYLE_SCRIPT, {
-		world: "MAIN"
-	})
+	Object.assign({}, CONTENT_SCRIPT_TEMPLATE, STYLE_SCRIPT)
 ];
 
 chrome.runtime.onStartup.addListener(function() {
@@ -54,7 +43,7 @@ chrome.storage.local.onChanged.addListener(function({ enabled, settings }) {
 	})
 });
 
-self.addEventListener('activate', async function() {
+self.addEventListener('activate', function() {
 	chrome.storage.local.get(({ enabled }) => {
 		typeof enabled != 'undefined' && setState({ enabled })
 	})
@@ -62,7 +51,7 @@ self.addEventListener('activate', async function() {
 
 self.addEventListener('install', async function() {
 	await chrome.scripting.unregisterContentScripts();
-	chrome.storage.local.get(async ({ enabled = true, settings }) => {
+	chrome.storage.local.get(({ enabled = true, settings }) => {
 		chrome.storage.local.set({
 			enabled,
 			badges: true,
@@ -74,8 +63,8 @@ self.addEventListener('install', async function() {
 async function setState({ enabled = true }) {
 	const path = size => `/icons/${enabled ? '' : 'disabled/'}icon_${size}.png`;
 	if (enabled) {
-		await initContentScripts();
-		await chrome.storage.local.get(setTheme);
+		await chrome.scripting.registerContentScripts(contentScripts);
+		await chrome.storage.local.get(updateStyleScript);
 	} else {
 		await chrome.scripting.unregisterContentScripts();
 	}
@@ -89,41 +78,27 @@ async function setState({ enabled = true }) {
 	})
 }
 
-async function initContentScripts() {
-	const registeredScripts = await chrome.scripting.getRegisteredContentScripts();
-	if (registeredScripts.length < 1) {
-		chrome.scripting.registerContentScripts(contentScripts);
-	}
-}
-
-async function fetchContentScript(...args) {
+async function fetchContentScript(scriptId) {
 	const registeredScripts = await chrome.scripting.getRegisteredContentScripts();
 	if (registeredScripts.length < 1) return null;
-	const match = registeredScripts.find(({ id }) => id == args[0]);
-	let callback = args.at(-1);
-	typeof callback == 'function' && callback(match);
+	const match = registeredScripts.find(({ id }) => id == scriptId);
 	return match ?? null
 }
 
 async function setTheme({ settings: { style, theme }}) {
-	// STYLE_SCRIPT.css.splice(0);
-	// Only remove style/theme scripts so that modular addon styles persist
-	const styleScripts = STYLE_SCRIPT.css.filter(path => /^assets\/styles\/(themes\/)?\w+\.css$/.test(path));
-	for (const styleScript of styleScripts) {
+	for (const styleScript of STYLE_SCRIPT.css.filter(path => !path.includes('/modules/'))) {
 		STYLE_SCRIPT.css.splice(STYLE_SCRIPT.css.indexOf(styleScript), 1);
 	}
 
-	style && style != 'default' && STYLE_SCRIPT.css.push("assets/styles/" + style + ".css");
-	STYLE_SCRIPT.css.push("assets/styles/themes/" + theme + ".css");
+	style && style != 'default' && STYLE_SCRIPT.css.push("shared/styles/" + style + ".css");
+	STYLE_SCRIPT.css.push("shared/styles/themes/" + theme + ".css");
 	return STYLE_SCRIPT
 }
 
 async function updateStyleScript({ settings }) {
-	const styleScript = await fetchContentScript(STYLE_SCRIPT_ID);
+	const styleScript = await fetchContentScript(STYLE_SCRIPT.id);
 	toggleModule('comments', settings.independentCommentScroll);
-	styleScript && await chrome.scripting.updateContentScripts([await setTheme(...arguments)]).catch(err => {
-		console.warn(err)
-	});
+	styleScript && await chrome.scripting.updateContentScripts([await setTheme(...arguments)])
 }
 
 function toggleModule(id, forceState) {

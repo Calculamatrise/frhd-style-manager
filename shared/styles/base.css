@@ -1,0 +1,197 @@
+:root {
+	/* use to integrate w/ themes so they suit the style */
+	--accent-hue: 194.79deg;
+	--accent-saturation: 57.48%;
+	--accent-lightness: 25%;
+
+
+	--bd-clr: hsl(0 0% 100% / 90%);
+	--bg-clr: hsl(0 0% 100%);
+	--btm-grad: hsl(191 100% 95%);
+	--secondary-grad: linear-gradient(to bottom, transparent, hsl(191deg 100% 50% / 10.5%)) !important;
+	--brdr-clr-1: hsl(193 44% 80%);
+	--brdr-clr-2: hsl(193 19% 62%);
+	--game-box-clr: hsl(190 21% 95%);
+	--odd-cmnt-clr: hsl(197 37% 96%);
+	--txt-clr: hsl(0 0% 18%);
+	--txt-clr-tinted: hsl(202 24% 9%);
+	--txt-clr-tinted-2: hsl(204 24% 22%);
+	--stat-val-clr: hsl(205.33deg 29.41% 30%);
+
+	/* extended */
+	--accent-color: hsl(194.79deg 57.48% 25%);
+	--background-color: hsl(0, 0%, 100%);
+	--border-color: hsl(201.82deg 24.44% 8.82%);
+	--secondary-border-color: hsl(0, 0%, 80%);
+	--header-gradient-color: hsl(194.74deg 58.76% 19.02%);
+	--left-nav-profile-bg: hsl(195, 57%, 25%);
+	--link-color: hsl(192 68% 35%);
+	--nav-background: hsl(195 57% 25%);
+	--text-color: hsl(0 0% 18%);
+}
+
+html { background-color: var(--bg-clr) !important }
+body, .account-settings-page .account-settings-panel .account-settings-item .account-settings-connected-container .connected-text { color: var(--txt-clr) !important }
+.account-settings-page .account-settings-panel .account-settings-item .account-settings-connected-container .account-setting-status-circle { background-color: var(--txt-clr) !important }
+.account-settings-page .account-settings-panel .account-settings-item .account-settings-connected-container .account-setting-status-circle :is(.icon-checkmark, .icon-close) { color: var(--bg-clr) !important }
+
+/* neutral properties */
+.header:has(> .header-search.show) > :not(.header-search.show) { display: none !important }
+.header .header-search.show { background-color: hsl(0 0% 0% / 50%) !important }
+.header .title-back .title-back-wrap { width: auto !important }
+
+.account-settings-page .account-settings-panel .account-settings-item .account-settings-content .text { color: unset !important }
+.achievements .achievements-type-title div.achievements-type-time-remaining .achievements-type-time-remaining-val,
+.trackTile .top :is(.bestTime, .trackType) { background-color: hsl(0 0% 50% / 10%) !important }
+
+.track-best-times-box { border-top: none !important }
+
+.track-page .track-about-panel.share .nav li.active, .track-page .track-about-panel.share .nav li.active:hover { color: currentColor !important }
+
+/* remove ads */
+.ad, .home-leaderboard-ad, .track-300x250-2-ad, .track-column-ad, .track-leaderboard-1, .track-list-promote, #leaderboard-1-ad, #leaderboard-2-ad { display: none !important }
+
+/* .link, a { color: var(--link-color) !important } */
+
+.achievements .achievements-type .achievements-type-title,
+div#main_page.is_mobile #right_content ul.track-list .campaign-panel, div#main_page.is_not_mobile #right_content ul.track-list .campaign-panel,
+.home-page .home-banner, .leaderboard-page .leaderboard-table .leaderboard-title select, .shop .page-panel-block-list .head-card, .trackTile .viewAll { background-image: linear-gradient(to bottom, transparent, hsl(191deg 100% 50% / 10.5%)) !important }
+.home-page .home-banner:hover, .leaderboard-page .leaderboard-table .leaderboard-title select:hover, .tab-container .tab-entry:hover, .trackTile .viewAll:hover { background-image: linear-gradient(to bottom, hsl(194.12deg 100% 50% / 7%), hsl(194.82deg 82.52% 50% / 40%)) !important }
+
+.trackTile .bottom .name { color: var(--txt-clr-tinted-2) !important }
+
+/* track page */
+.track-page .game-box, .trackTile .viewAll, .trackTile:hover, .profile-header, #content > div[style],
+.account-settings-page .account-settings-panel .account-settings-item .account-settings-header,
+.campaign .section-title-bar,
+.campaign .campaign-item:nth-last-of-type(odd),
+.mention>ul>li:hover,
+.shop .page-panel-block-list .head-card.active,
+.notifications :is(.notification_blockquote, .notification-list ul :is(.notification, .notification .notification-date)) { background-color: var(--game-box-clr) !important }
+/* bd-clr */
+.gameDialog, .gameFocusOverlay, .gameLoading { background-color: var(--bd-clr) !important }
+/* bg-clr */
+body .right-content, input,
+#add_invite_challenge_friends_container div#add_invite_challenge_friends_dialog,
+.account-settings-page .account-settings-panel :is(.account-settings-item, .account-settings-item .dropdown-menu),
+.dialog-panel,
+.friends-invite, :is(.friends-invite-share, .friends-invite-wrapper) .share,
+.mention>ul>li,
+.notification-settings .notification-settings-list ul :is(.all_email_notification, .notification),
+.page,
+.profile-header :is(#profile-stats :is(.profile-stats-bar-web, .profile-stats-bar-mobile), .profile-info .profile-account-settings ul.profile-account-dd),
+.switch,
+.tab-panel,
+.track-page :is(.track-about-box, .track-leaderboard),
+.track-comments-box, .track-suggested-box,
+.track-comments-container :is(.track-comments-input .track-comment-input,
+.track-comments-list div.track-comment),
+.track-list .track-column-campaign-nav, .track-list a.track-column-campaign-nav,
+.leaderboard-show-toggle,
+.track-page :is(.track-leaderboard, .track-leaderboard table tr) { background-color: var(--bg-clr) !important }
+
+div#main_page.is_not_mobile .right-content ul.track-list li .trackTile a.top { border-color: var(--bg-clr) !important }
+.profile-account-dd:after { border-bottom-color: var(--bg-clr) !important }
+
+.profile-header .profile-info .profile-account-settings ul li:hover {
+	background-color: var(--brdr-clr-1) !important;
+	border-bottom-color: var(--game-box-clr) !important;
+	border-top-color: var(--game-box-clr) !important;
+}
+
+.campaign .campaign-item:hover,
+.challenge-invite .challenge-friends .challenge-friends-wrapper ul .challenge-friend.selected,
+.leaderboard-page .pagination-header,
+.leaderboard-page .leaderboard-list .leaderboard-item.current-user,
+.mention>ul>li.selected,
+.pagination li.cat-page:hover,
+.profile-header #profile-stats .stat-category,
+.profile-friends-type-tabs .profile-friends-type-tab .count,
+.shop :is(ul.store-list li.store-item:nth-of-type(even), .store-deal-of-the-day, .store-earn-coins, .store-frhd-plus, .store-payment-details :is(.store-payment-support, .store-secure-payments)),
+.track-page .track-leaderboard h3,
+.track-comments-container :is(.track-comments-input, .track-comments-list div.track-comment:nth-child(odd)) { background-color: var(--odd-cmnt-clr) !important }
+.campaign .section-title-bar,
+.track-page :is(.track-about-panel.main .track-stats, .track-leaderboard h3),
+.track-comments-box, .track-suggested-box,
+.track-comments-container .track-comments-list div.track-comment:nth-child(odd),
+.friends-invite-share, .friends-invite-wrapper, .friends-invite-controls {
+	border-bottom-color: var(--brdr-clr-1) !important;
+	border-top-color: var(--brdr-clr-1) !important;
+}
+
+body .right-content,
+input, .track-comments-container .track-comments-input .track-comment-input,
+.account-settings-page .account-settings-panel :is(.account-settings-item, .account-settings-item .account-settings-header, .account-settings-item .create-avatar, .account-settings-item .dropdown-menu),
+.achievements :is(.achievements-list li, .achievements-type, .achievements-type .achievements-type-title),
+.campaign .campaign-item,
+.dialog-panel,
+.home-page .home-banner, .trackTile :is(.top, .viewAll),
+.leaderboard-page :is(.pagination-header, .leaderboard-table, .leaderboard-table .leaderboard-title select, .leaderboard-list, .leaderboard-list .leaderboard-item),
+#main_page.is_mobile .track-about-box,
+#main_page.is_not_mobile :is(.right-content ul.track-list li .trackTile img.track-list-tile-thumb, .track-about-box, .track-comments-box),
+.notifications .notification-list :is(ul, ul .notification, ul .notification .notification-date),
+.notification-settings .notification-settings-list :is(ul, ul :is(.all_email_notification, .notification)),
+.pagination li.cat-page,
+.profile-tabs, .profile-tabs .tab-entry, .friend-list li, .friends-invite, :is(.friends-invite-share, .friends-invite-wrapper) .share,
+.shop :is(ul.store-list li.store-item:nth-of-type(even), .page-panel-block-list .head-card, .redeem-coupon-code, .store-deal-of-the-day, .store-earn-coins, .store-frhd-plus, .store-payment-details :is(.store-payment-support, .store-secure-payments)),
+.track-comments-box, .track-suggested-box,
+.track-comments-container .track-comments-loading, .track-comments-container .track-prev-comments,
+.track-list .track-column-campaign-nav, .track-list a.track-column-campaign-nav,
+.track-page :is(.game-box .game, .track-about-box .track-rate, .track-about-panel.main .track-stats div, .trackTile img.track-list-tile-thumb),
+.track-suggested-box h3,
+.tab-container, .track-view .tab-container .tab-entry { border-color: var(--brdr-clr-1) !important }
+.tab-container { background-image: linear-gradient(to bottom, var(--bg-clr), hsl(var(--accent-hue) var(--accent-saturation) 50% / 15%)) !important }
+
+.profile-header #profile-stats :is(.profile-stats-bar-web, .profile-stats-bar-mobile, .stat) { border-color: var(--brdr-clr-2) !important }
+.profile-header #profile-stats .stat .name { color: var(--brdr-clr-2) !important }
+
+input,
+label,
+.account-settings-page :is(h3, .account-settings-panel .account-settings-item .account-settings-header .title),
+.campaign .section-title-bar,
+.profile-friends-type-tabs .profile-friends-type-tab.active,
+.profile-header :is(#profile-stats .stat-category .name, .profile-info :is(.profile-account-settings ul, .profile-blurb)),
+.profile-friends-type-tabs .profile-friends-type-tab .count,
+.trackTile :is(.bottom .stat, .top :is(.bestTime, .trackType)),
+.track-page .track-about-panel.main :is(.published_date, .track-rating .track-rating-count),
+.track-comments-container .track-comments-list div.track-comment { color: var(--txt-clr-tinted) !important }
+.achievements .achievements-type-title :is(div.achievements-type-title-div, div.achievements-type-time-remaining),
+.campaign :is(.section-title-bar, .campaign-item .info .condensed, .campaign-link-submit),
+.challenge-invite .title, .modal-overlay .campaign-unlock-modal-box .campaign-unlock-modal-box-middle .requirement-progress .text,
+.contact .title, .profile-header .profile-info h3,
+.friends-invite-share .title, .friends-invite-wrapper .title,
+.friends-invite-controls .title, .friends-invite-top .title,
+.home-page .home-banner .tableWrap .title,
+.leaderboard-category-name,
+.leaderboard-page .leaderboard-list .leaderboard-item .leaderboard-item-desc a,
+.notifications :is(.notification_blockquote, .notification-list :is(ul .notification .notification-date, .title)),
+.pagination li.cat-page a,
+.shop :is(ul.store-list li.store-item .store-info div.coins .tag, .page-panel-block-list .head-card .title, .page-user-stat, .redeem-coupon-code .title, .store-earn-coins .title, .store-frhd-plus :is(ul li, .top-blurb)),
+.tab-container .tab-entry,
+.track-page .track-about-box .tab_buttons-container li:hover span.name,
+.trackList .title .name,
+.trackTile .viewAll .text,
+.track-page .track-leaderboard h3,
+.track-comments-container .track-comments-list div.track-comment :is(a:is(.track-comment-delete, .track-comment-flag, .track-comment-reply), span:is(.track-comment-confirm-delete, .track-comment-confirm-flag)) { color: var(--accent-color) !important }
+
+
+/* .new-button.button-type-2 { border-color: var(--txt-clr-tinted) !important } */
+
+.profile-header #profile-stats .stat .val { color: var(--stat-val-clr) !important }
+
+.challenge-invite .challenge-friends .challenge-friends-wrapper ul .challenge-friend.selected,
+.trackTile:hover a.top { border-color: var(--txt-clr-tinted) !important }
+
+/* footer */
+.left-navigation .left-nav-more, .trackList .title .desc,
+.track-page .track-about-panel.main .track-stats div .stat { color: var(--brdr-clr-1) !important }
+
+.mention { box-shadow: 1px 1px 8px var(--game-box-clr) !important }
+
+
+
+.friend-list-button .accept { background-color: hsl(128deg 25% 39% / 50%) !important }
+.friend-list-button .accept:hover { background-color: hsl(128deg 25% 39% / 25%) !important }
+.friend-list-button .deny:not(:hover) { background-color: hsl(0 0% 50% / 50%) !important }
+.friend-list-button a span.core_icons.core_icons-btn_add_race, .friend-list-button a:active span.core_icons.core_icons-btn_add_race, .friend-list-button a:hover span.core_icons.core_icons-btn_add_race, .friend-list-button a:visited span.core_icons.core_icons-btn_add_race { top: 4px !important }
+.tipsy.tipsy-w { text-transform: capitalize }

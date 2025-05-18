@@ -1,0 +1,17 @@
+:root {
+	/* experimental darkness */
+	--accent-color: hsl(0 0% 70%);
+	--bd-clr: hsl(0 0% 0% / 90%);
+	--bg-clr: hsl(0 0% 0%);
+	--brdr-clr-1: hsl(0 0% 5%);
+	--brdr-clr-2: hsl(0 0% 7.5%);
+	--game-box-clr: hsl(0 0% 4%);
+	--odd-cmnt-clr: hsl(0 0% 3%);
+	--txt-clr: hsl(0 0% 85%);
+	--txt-clr-tinted: hsl(0 0% 85%);
+	--txt-clr-tinted-2: hsl(0 0% 70%);
+	--stat-val-clr: hsl(0 0% 55%);
+	color-scheme: dark
+}
+
+.top > :is(.preview, .thumb), .track-list-tile-thumb { filter: invert(.9) brightness(.9) }

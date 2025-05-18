@@ -1,0 +1,20 @@
+:root {
+	/* experimental */
+	--text-brightness: 91%;
+
+	--accent-color: hsl(0 0% 75%);
+	--bd-clr: hsl(0 0% 5% / 90%);
+	--bg-clr: hsl(0 0% 5%);
+	--btm-grad: hsl(0 0% 5% / 50%);
+	--brdr-clr-1: hsl(0 0% 10%);
+	--brdr-clr-2: hsl(0 0% 15%);
+	--game-box-clr: hsl(0 0% 8%);
+	--odd-cmnt-clr: hsl(0 0% 6%);
+	--txt-clr: hsl(0 0% 91%);
+	--txt-clr-tinted: hsl(0 0% 91%);
+	--txt-clr-tinted-2: hsl(0 0% 78%);
+	--stat-val-clr: hsl(0 0% 60%);
+	color-scheme: dark
+}
+
+.top > :is(.preview, .thumb), .track-list-tile-thumb { filter: invert(.9) brightness(.9) }
